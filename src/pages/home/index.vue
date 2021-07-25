@@ -1,20 +1,30 @@
 <template>
-<div>
-  home
-</div>
+  <div class="home">
+    <!-- 左侧区域 -->
+    <div class="home-left"></div>
+    <!-- 右侧区域 -->
+    <div class="home-right"></div>
+  </div>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-
+import { Options, Vue } from "vue-class-component";
 
 @Options({
-  components: {
-  },
+  components: {},
 })
 export default class App extends Vue {}
 </script>
 
-<style>
+<style lang="less" scoped>
+.home{
+  width: 100%;
+  &-left{
+
+  }
+  &-right{
+
+  }
+}
 
 </style>
