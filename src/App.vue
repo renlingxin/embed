@@ -1,17 +1,39 @@
 <template>
   <div>
-    <router-view></router-view>
+    <transition
+      @before-enter="beforeEnter"
+      @enter="enter"
+      :css="false"
+    >
+      <router-view></router-view>
+    </transition>
+    <Loading v-if="loadingShow" />
   </div>
-  <!-- <Home msg="Welcome to Your Vue.js + TypeScript App" /> -->
 </template>
-
 <script lang="ts">
+import Loading from "@/components/loading.vue";
 import { Options, Vue } from "vue-class-component";
-// import Home from "@/pages/home/index.vue";
 
 @Options({
   components: {
-    // Home,
+    Loading,
+  },
+  data() {
+    return {
+      loadingShow: false,
+    };
+  },
+  methods: {
+    beforeEnter(el: any) {
+      this.loadingShow = true;
+      console.log(222, el);
+    },
+    enter(el: any, done: any) {
+      setTimeout(() => {
+        this.loadingShow = false;
+        console.log(333, el, done);
+      }, 2000);
+    },
   },
 })
 export default class App extends Vue {

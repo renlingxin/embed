@@ -14,4 +14,11 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
 });
+// router.beforeEach((to,from,next)=>{
+// console.log(to,from);
+//   setTimeout(() => {
+//     next()
+//     console.log('截取到了');
+//   }, 2000);
+// })
 export default router
