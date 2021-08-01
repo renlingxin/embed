@@ -32,7 +32,7 @@ import { Options, Vue } from "vue-class-component";
       setTimeout(() => {
         this.loadingShow = false;
         console.log(333, el, done);
-      }, 2000);
+      }, 0);
     },
   },
 })

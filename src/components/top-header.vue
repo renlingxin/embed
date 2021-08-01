@@ -14,6 +14,7 @@ import { Options, Vue } from "vue-class-component";
   components: {},
 })
 export default class App extends Vue {
+  $router: any;
   start() {
     this.$router.push({ path: "/preview" });
   }
