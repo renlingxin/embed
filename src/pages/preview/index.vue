@@ -1,15 +1,16 @@
 <template>
   <div class="preview">
-    <!-- <div class="preview-top"> -->
-    <!-- 操作区域 -->
     <ul :class="{ active: activeShow, 'preview-make': true }">
       <li>后退</li>
-      <li>前进</li>
+      <li @click="go">前进</li>
     </ul>
-    <!-- </div> -->
     <!-- 内容区域 -->
     <div class="preview-view">
-      <div class="preview-content" v-for="item in contentArr" :key="item.id">
+      <div
+        :class="{ 'preview-content': true, disNone: hiddenIndex === item.id }"
+        v-for="item in contentArr"
+        :key="item.id"
+      >
         {{ item.name }}
       </div>
     </div>
@@ -17,9 +18,6 @@
     <div class="button-make">
       <button @click="top">点击</button>
     </div>
-    <!-- <div class="button-content">
-      点击
-    </div> -->
   </div>
 </template>
 
@@ -28,6 +26,7 @@ import { Options, Vue } from "vue-class-component";
 
 @Options({
   components: {},
+  data() {},
 })
 export default class App extends Vue {
   activeShow: boolean = false;
@@ -45,8 +44,12 @@ export default class App extends Vue {
       id: 3,
     },
   ];
+  hiddenIndex: number = 3;
   top() {
     this.activeShow = !this.activeShow;
+  }
+  go() {
+    this.hiddenIndex = this.hiddenIndex--;
   }
 }
 </script>
@@ -80,16 +83,25 @@ export default class App extends Vue {
     }
   }
   &-view {
-    display: flex;
-    flex-flow: row wrap;
-  }
-  &-content {
+    position: relative;
     margin: 50px auto;
-    background-color: #fff;
     width: 65%;
     height: 550px;
-    border: 8px solid red;
+    overflow: hidden;
   }
+  &-content {
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    display: block;
+    height: 550px;
+    // border: 8px solid red;
+    transition: all ease-in 1s;
+  }
+}
+.disNone {
+  transform: translate(0, -200px);
+  display: none;
 }
 .button {
   &-make {
@@ -102,16 +114,16 @@ export default class App extends Vue {
       border-radius: 50%;
     }
   }
-  // &-content {
-  //   position: fixed;
-  //   top: 320px;
-  //   right: 50px;
-  //   background-color: #fff;
-  //   width: 50px;
-  //   height: 50px;
-  // }
 }
 .active {
   transform: translate(-0px, -100px);
+}
+@keyframes jump {
+  0% {
+    top: -100px;
+  }
+  100% {
+    top: 0px;
+  }
 }
 </style>
