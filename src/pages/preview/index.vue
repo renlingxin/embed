@@ -16,7 +16,7 @@
     </div>
     <!-- 操作按钮 -->
     <div class="button-make">
-      <button @click="top">点击</button>
+      <button @click="top">操作</button>
     </div>
   </div>
 </template>
@@ -49,7 +49,8 @@ export default class App extends Vue {
     this.activeShow = !this.activeShow;
   }
   go() {
-    this.hiddenIndex = this.hiddenIndex--;
+    this.hiddenIndex -=1;
+    if(this.hiddenIndex <=0) this.hiddenIndex = 3
   }
 }
 </script>
@@ -93,15 +94,16 @@ export default class App extends Vue {
     position: absolute;
     background-color: #fff;
     width: 100%;
-    display: block;
+    display: none;
     height: 550px;
     // border: 8px solid red;
     transition: all ease-in 1s;
   }
 }
 .disNone {
-  transform: translate(0, -200px);
-  display: none;
+  // transform: translate(0, 0);
+  animation: leftToo 2s ease-in 1;
+  display: block;
 }
 .button {
   &-make {
@@ -124,6 +126,14 @@ export default class App extends Vue {
   }
   100% {
     top: 0px;
+  }
+}
+@keyframes leftToo {
+  0% {
+    transform: translate(-1000px);
+  }
+  100% {
+    transform: translate(0px);
   }
 }
 </style>
