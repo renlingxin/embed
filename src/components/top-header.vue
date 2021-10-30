@@ -9,20 +9,27 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import Toast from '../components/init'
-@Options({
-  components: {},
-})
-export default class App extends Vue {
-  $router: any;
+// import Toast from "./init";
+import { reactive } from "vue";
+
+export default {
+  setup() {
+
+  },
+  methods:{
   start() {
-    Toast({})
-    // setTimeout(() => {
-    //   clearToast()
-    // }, 2000);
+    const state = reactive({
+      message: "vcvcvcv",
+    });
+    this.$Toast(state)
+    
+    setTimeout(()=>{
+      this.$Toast.close()
+    },1000)
     // this.$router.push({ path: "/preview" });
+  },
   }
-}
+};
 </script>
 
 <style lang="less">
