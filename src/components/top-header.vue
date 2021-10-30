@@ -9,14 +9,18 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-
+import Toast from '../components/init'
 @Options({
   components: {},
 })
 export default class App extends Vue {
   $router: any;
   start() {
-    this.$router.push({ path: "/preview" });
+    Toast({})
+    // setTimeout(() => {
+    //   clearToast()
+    // }, 2000);
+    // this.$router.push({ path: "/preview" });
   }
 }
 </script>
