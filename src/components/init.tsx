@@ -4,8 +4,8 @@ import ToastCom from "./toast.vue";
 interface OptionType {
   message?: String | any;
 }
-let closeApi:any = null
 
+const stack: Array<Function> = [];
 // 挂载Dom节点
 export function mounteComponent(ReactDom: any = ToastCom) {
   const _t = document.createElement("div");
@@ -27,24 +27,29 @@ export function Toast(option: OptionType) {
   const { install, unInstall } = mounteComponent({
     setup() {
       const render = () => {
-        return <ToastCom {...option} />;
+        const attrs = {
+          onClose: unInstall
+        }
+        return <ToastCom {...option} {...attrs}/>;
       };
       (getCurrentInstance() as any).render = render;
-
-      // return () => h(ToastCom, [state.message])
+      // return () => h(ToastCom, option);
     },
   });
   install();
-  closeApi = unInstall
+  stack.push(unInstall);
   return () => {
     unInstall();
   };
 }
 
-// all关闭
-Toast.close = function(){
-  closeApi && closeApi()
-}
+// 全局关闭 - 依次关闭
+Toast.close = function() {
+  if (stack.length) {
+    const last = stack.pop();
+    last && last();
+  }
+};
 
 // 全局挂载
 export default {

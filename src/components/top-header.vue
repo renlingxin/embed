@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+// import { Options, Vue } from "vue-class-component";
 // import Toast from "./init";
 import { reactive } from "vue";
 
@@ -19,12 +19,19 @@ export default {
   methods:{
   start() {
     const state = reactive({
+      show: true,
       message: "vcvcvcv",
+      onClick: () => {
+        (this as any).$Toast.close()
+        console.log('00000')
+      },
+      Dom: `<div>任岭鑫</div>`
     });
-    this.$Toast(state)
-    
+    (this as any).$Toast(state)
+
     setTimeout(()=>{
-      this.$Toast.close()
+      // state.show = false
+      // (this as any).$Toast.close()
     },1000)
     // this.$router.push({ path: "/preview" });
   },
