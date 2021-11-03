@@ -1,26 +1,11 @@
 import { createApp, reactive, getCurrentInstance, h } from "vue";
-import ToastCom from "./toast.vue";
+import ToastCom from "./index.vue";
+import { mounteComponent } from '../utils/dom'
 
-interface OptionType {
-  message?: String | any;
-}
+import { OptionType } from './types'
 
 const stack: Array<Function> = [];
-// 挂载Dom节点
-export function mounteComponent(ReactDom: any = ToastCom) {
-  const _t = document.createElement("div");
-  document.body.appendChild(_t);
-  const _toast = createApp(ReactDom);
-  return {
-    install: () => {
-      _toast.mount(_t);
-    },
-    unInstall: () => {
-      _toast.unmount();
-      document.body.removeChild(_t);
-    },
-  };
-}
+
 
 // 运行函数
 export function Toast(option: OptionType) {

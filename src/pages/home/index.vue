@@ -16,7 +16,6 @@
 
       </div>
     </div>
-    <!-- <Toast n="ddddd"/> -->
   </div>
 </template>
 
@@ -24,12 +23,10 @@
 import LeftContent from '@/components/left-content.vue'
 import TopHeader from '@/components/top-header.vue'
 import { Options, Vue } from "vue-class-component";
-import Toast from '../../components/toast.vue'
 @Options({
   components: {
     LeftContent,
-    TopHeader,
-    Toast
+    TopHeader
   },
 })
 export default class App extends Vue {

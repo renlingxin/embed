@@ -15,20 +15,20 @@ export default defineComponent({
     show: Boolean,
     onClick: Function,
     Dom: String,
-    onClose: Function
+    onClose: Function,
   },
   setup(props) {
     console.log(props, "33");
-    let toastShow = ref(props.show)
-    const close = () =>{
-      props.onClose && props.onClose()
+    let toastShow = ref(props.show);
+    const close = () => {
+      props.onClose && props.onClose();
       // toastShow.value = false
-      console.log('close')
-    }
+      console.log("close");
+    };
     return {
       toastShow,
-      close
-    }
+      close,
+    };
   },
 });
 </script>
