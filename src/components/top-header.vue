@@ -19,13 +19,12 @@ export default {
   methods:{
   start() {
     const state = reactive({
-      show: true,
-      message: "vcvcvcv",
-      onClick: () => {
-        (this as any).$Toast.close()
-        console.log('00000')
-      },
-      Dom: `<div>任岭鑫</div>`
+      // show: true,
+      message: "恭喜",
+      type:'error'
+      // onClick: () => {
+      //   (this as any).$Toast.close()
+      // }
     });
     (this as any).$Toast(state)
 
