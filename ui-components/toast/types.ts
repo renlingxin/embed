@@ -1,7 +1,9 @@
 import type { PropType } from 'vue';
 
 export interface OptionType {
-  message?: String | any;
+  message: string;
+  type: TToast;
+  duration: number
 }
 export type TToast = 'success' | 'error' | 'warn';
 

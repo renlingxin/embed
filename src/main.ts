@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import Toast from './ui-components/toast/init'
+import Toast from '../ui-components/toast/init'
 const _app = createApp(App).use(store)
 _app.use(router)
 _app.use(Toast)

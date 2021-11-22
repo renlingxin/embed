@@ -13,6 +13,7 @@ const toastProps = {
   message: String, // 提示内容
   onClose: Function, // 关闭
   type: useStringProp<TToast>("success"), // 类型
+  duration: Number,
 };
 
 export default defineComponent({
@@ -22,11 +23,28 @@ export default defineComponent({
      * toastShow 内部状态待定
      */
     // let toastShow = ref(props.show);
+
+    /**
+     * 样式类型
+     */
     const classType = `ren-toast__${props.type}`;
 
+    /**
+     * 关闭
+     * @description 会调用父级销毁dom的方法
+     */
     const close = () => {
+      if(durationClose) clearTimeout(durationClose)
       props.onClose && props.onClose();
     };
+
+    /**
+     * 倒计时关闭
+     */
+    const durationClose = setTimeout(() => {
+      close();
+    },props.duration);
+
     return {
       classType,
       // toastShow,

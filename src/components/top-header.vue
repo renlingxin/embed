@@ -8,34 +8,29 @@
 </template>
 
 <script lang="ts">
-// import { Options, Vue } from "vue-class-component";
+import { Vue } from "vue-class-component";
 // import Toast from "./init";
+import { getModule } from "vuex-module-decorators";
+import { indexModule } from "../store/test";
 import { reactive } from "vue";
-
-export default {
+import { useStore } from "vuex";
+export default class App extends Vue {
   setup() {
-
-  },
-  methods:{
+    const MyModuleInstance = getModule(indexModule, useStore());
+    MyModuleInstance.setTest("renlingxin");
+    console.log(MyModuleInstance.test, "MyModuleInstance");
+  }
   start() {
     const state = reactive({
       // show: true,
       message: "恭喜",
-      type:'error'
-      // onClick: () => {
-      //   (this as any).$Toast.close()
-      // }
+      type: "error",
+      duration: 2000
     });
-    (this as any).$Toast(state)
-
-    setTimeout(()=>{
-      // state.show = false
-      // (this as any).$Toast.close()
-    },1000)
+    (this as any).$Toast(state);
     // this.$router.push({ path: "/preview" });
-  },
   }
-};
+}
 </script>
 
 <style lang="less">
