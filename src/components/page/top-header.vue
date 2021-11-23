@@ -9,23 +9,25 @@
 
 <script lang="ts">
 import { Vue } from "vue-class-component";
-// import Toast from "./init";
 import { getModule } from "vuex-module-decorators";
-import { indexModule } from "../store/test";
+import { indexModule } from "../../store/test";
 import { reactive } from "vue";
-import { useStore } from "vuex";
+// import { useStore } from "vuex";
+import { Log } from "../../util/index";
+
 export default class App extends Vue {
-  setup() {
-    const MyModuleInstance = getModule(indexModule, useStore());
+  created() {
+    const MyModuleInstance = getModule(indexModule);
     MyModuleInstance.setTest("renlingxin");
-    console.log(MyModuleInstance.test, "MyModuleInstance");
+    console.log(MyModuleInstance, "MyModuleInstance");
   }
+  @Log
   start() {
     const state = reactive({
       // show: true,
       message: "恭喜",
       type: "error",
-      duration: 2000
+      duration: 2000,
     });
     (this as any).$Toast(state);
     // this.$router.push({ path: "/preview" });

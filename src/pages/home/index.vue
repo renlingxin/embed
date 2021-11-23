@@ -20,8 +20,8 @@
 </template>
 
 <script lang="ts">
-import LeftContent from '@/components/left-content.vue'
-import TopHeader from '@/components/top-header.vue'
+import LeftContent from '@/components/page/left-content.vue'
+import TopHeader from '@/components/page/top-header.vue'
 import { Options, Vue } from "vue-class-component";
 @Options({
   components: {

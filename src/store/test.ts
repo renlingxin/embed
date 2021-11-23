@@ -1,8 +1,9 @@
 import { VuexModule, Action, Module, Mutation } from "vuex-module-decorators";
+import store from './index'
 @Module({
   name: "indexModule",
-  namespaced: true,
-  stateFactory: true,
+  dynamic: true,
+  store,
 })
 export class indexModule extends VuexModule {
   public test: string = "";

@@ -24,14 +24,12 @@ import { Options, Vue } from "vue-class-component";
     };
   },
   methods: {
-    beforeEnter(el: any) {
+    beforeEnter() {
       this.loadingShow = true;
-      console.log(222, el);
     },
-    enter(el: any, done: any) {
+    enter() {
       setTimeout(() => {
         this.loadingShow = false;
-        console.log(333, el, done);
       }, 0);
     },
   },
