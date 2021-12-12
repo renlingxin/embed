@@ -1,9 +1,10 @@
 <template>
   <div class="home">
+    <login></login>
     <!-- 左侧区域 -->
-    <div class="home-left"><LeftContent /></div>
+    <!-- <div class="home-left"><LeftContent /></div> -->
     <!-- 右侧区域 -->
-    <div class="home-right">
+    <div class="home-right" v-if="false">
       <TopHeader />
       <!-- 内容区域 -->
       <div class="home-content">
@@ -22,18 +23,17 @@
 <script lang="ts">
 import LeftContent from '@/components/page/left-content.vue'
 import TopHeader from '@/components/page/top-header.vue'
+import login from '@/components/login.vue'
 import { Options, Vue } from "vue-class-component";
 @Options({
   components: {
     LeftContent,
-    TopHeader
+    TopHeader,
+    login
   },
 })
 export default class App extends Vue {
-  setup(){
-    console.log('333333')
-    return {}
-  }
+
 }
 </script>
 
