@@ -1,10 +1,10 @@
 <template>
   <div class="home">
-    <login></login>
+    <!-- <login></login> -->
     <!-- 左侧区域 -->
-    <!-- <div class="home-left"><LeftContent /></div> -->
+    <div class="home-left"><LeftContent /></div>
     <!-- 右侧区域 -->
-    <div class="home-right" v-if="false">
+    <div class="home-right">
       <TopHeader />
       <!-- 内容区域 -->
       <div class="home-content">
